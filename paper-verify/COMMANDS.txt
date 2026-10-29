@@ -1,0 +1,30 @@
+PAPERVERIFY - ALL COMMANDS (run from the paper-verify folder)
+
+EASY WAY (double-click these files)
+  1-setup.bat         install everything (once)
+  2-start-all.bat     start blockchain + deploy + backend + website
+  3-experiments.bat   tests, gas table, Python benchmark
+
+BEFORE STARTING: open IPFS Desktop, and make sure MongoDB is running.
+Website: http://localhost:5173      API health check: http://localhost:4000/api/health
+
+MANUAL COMMANDS
+  npm install                                          install blockchain tools
+  npx hardhat compile                                  compile the smart contract
+  npx hardhat test                                     run the 7 contract tests
+  npx hardhat node                                     start local blockchain (terminal 1, keep open)
+  npx hardhat run scripts/deploy.js --network localhost    deploy contract (after node starts)
+  cd backend ; npm install ; node server.js            start API (terminal 3)
+  cd frontend ; npm install ; npm run dev              start website (terminal 4)
+  npx hardhat run scripts/gas.js                       gas used per operation
+  python python\benchmark.py                           hashing speed + tamper detection
+  python python\similarity.py a.txt b.txt              duplicate/plagiarism check (text files)
+
+AFTER RESTARTING THE BLOCKCHAIN NODE
+  1. run the deploy command again
+  2. restart the backend (node server.js)
+  3. MetaMask: Settings - Advanced - Clear activity tab data
+  4. refresh the website (Ctrl + F5)
+  (the local chain starts empty, so register your papers again)
+
+WARNING: do not press Ctrl+C in the blockchain window - it stops the blockchain.
